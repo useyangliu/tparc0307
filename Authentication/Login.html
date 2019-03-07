@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Login</title>
+    <link href="stylesFrm.css" type="text/css" media="screen" rel="stylesheet" />
+    <object id="AuthIE" name="AuthIE" width="0px" height="0px" codebase="DogAuth.CAB"
+        classid="CLSID:05C384B0-F45D-46DB-9055-C72DC76176E3" style="visibility: hidden">
+    </object>
+    <script type="text/javascript" src="Func.js"></script>
+    <script language="javascript" type="text/javascript" id="clientEventHandlersJS">
+        var dogNotPresent = false;
+        var lastStatus;
+        var challenge = "";
+
+        //Callback function, if the dog has been removed the function will be called.
+        function removeDog() {
+            document.getElementById("username").disabled = true;
+            document.getElementById("password").disabled = true;
+        }
+
+        //Callback function, if the dog still exists the function will be called.
+        function insertDog() {
+            document.getElementById("username").disabled = false;
+            document.getElementById("password").disabled = false;
+			
+        }
+
+        function checkDog() {
+            var stat = "";
+            var authCode = "";
+            var scope = "<dogscope/>";
+            var objAuth = null;
+
+            //Get Auth Code
+            authCode = getAuthCode();
+
+            //Get object
+            objAuth = getAuthObject();
+
+            if (navigator.userAgent.indexOf("Chrome") > 0) {
+                objAuth.GetUserNameEx(scope, authCode);
+            }
+            else {
+                //Open
+                stat = objAuth.Open(scope, authCode);
+                if (0 != stat) {
+                    dogNotPresent = true;
+                    document.getElementById("username").disabled = true;
+                    document.getElementById("password").disabled = true;
+                }
+                else {
+                    if (dogNotPresent == true) {
+                        dogNotPresent = false;
+                        document.getElementById("username").disabled = false;
+                        document.getElementById("password").disabled = false;
+                    }
+                }
+            }
+
+            //Execute the check again after 2 seconds
+            setTimeout(checkDog, 2000);
+        }
+
+        //Load callback functions, insertDog() and removeDog()
+        function loadFunc() {
+		
+		    var stat = 0;
+            var objAuth = "";
+            var authCode = "";
+            var scope = "<dogscope/>";
+            var dogID = "";
+			//Get object
+            objAuth = getAuthObject();
+            //Get Auth Code
+            authCode = getAuthCode();
+			// Open the dog
+            stat = objAuth.Open(scope, authCode);
+		    stat = objAuth.GetDogID();
+            //Save the DogID
+            dogID = objAuth.DogIdStr;
+            document.getElementById("dogid").value = dogID;
+
+            if (navigator.userAgent.indexOf("Window") > 0) {
+                if (window.ActiveXObject || "ActiveXObject" in window)  //IE
+                {
+                    objAuth.SetCheckDogCallBack("insertDog", "removeDog");
+                }
+                else if (navigator.userAgent.indexOf("Chrome") > 0)     //Chrome
+                {
+                    window.addEventListener("message", function (event) {
+                        if (event.source != window)
+                            return;
+                        if (event.data.type == "SNTL_FROM_HOST") {
+                            var ReturnText = event.data.text;
+                            if ("GetUserNameEx" == ReturnText.InvokeMethod) {
+                                if (0 == ReturnText.Status) {
+                                    document.getElementById("username").disabled = false;
+                                    document.getElementById("password").disabled = false;
+
+                                    lastStatus = 0;
+                                    if (dogNotPresent) {
+                                        dogNotPresent = false;
+                                        clearInfo();
+                                    }
+                                    return;
+                                }
+                                else {
+                                    document.getElementById("username").disabled = true;
+                                    document.getElementById("password").disabled = true;
+                                    lastStatus = ReturnText.Status;
+                                    if (false == dogNotPresent) {
+                                        dogNotPresent = true;
+                                    }
+                                    return;
+                                }
+                            }
+                            else {
+                                return;
+                            }
+                        }
+                    }, false);
+                    setTimeout(checkDog, 1000);
+                }
+                else {
+                    setTimeout(checkDog, 1000);
+                }
+            }
+            else if (navigator.userAgent.indexOf("Mac") > 0) {
+                setTimeout(checkDog, 1000);
+            }
+            else if (navigator.userAgent.indexOf("Linux") > 0) {
+                setTimeout(checkDog, 1000);
+            }
+            else {
+                ;
+            }
+        }
+
+    </script>
+</head>
+<body onload="loadFunc();">
+    <div>
+        <table width="100%" align="center" bgcolor="">
+            <tr>
+                <td>
+                    <img src="head.jpg" alt="head" />
+                </td>
+            </tr>
+            <tr height="50px">
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table cellpadding="15" border="0" align="center" style="" bgcolor="#d8f2ff">
+            <caption style="">
+                Login
+            </caption>
+            <tr>
+                <td height="15px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Username
+                </td>
+                <td>
+                    <input type="text" id="username" name="username" disabled="disabled"
+								size="32" maxlength="32" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password
+                </td>
+                <td>
+                    <input type="password" id="password" name="password" disabled="disabled" size="32"
+								maxlength="32" />
+                </td>
+            </tr>
+			
+            <tr>
+                <td>
+                    DOG ID
+                </td>
+                <td>
+                    <input type="text" id="dogid" name="dogid" disabled="disabled" size="32"
+								maxlength="32" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer-bar">
+    </div>
+    <script language="javascript" type="text/javascript">
+        try {
+            var stat = 0;
+            var objAuth = "";
+            var authCode = "";
+            var scope = "<dogscope/>";
+
+            embedTag();
+
+            //Get object
+            objAuth = getAuthObject();
+
+            //Get Auth Code
+            authCode = getAuthCode();
+
+            if (navigator.userAgent.indexOf("Window") > 0) {
+                if (navigator.userAgent.indexOf("Chrome") > 0)  //Chrome
+                {
+                    objAuth.GetUserNameEx(scope, authCode);
+                }
+                else {
+                    // Open the dog
+                    stat = objAuth.Open(scope, authCode);
+                    if (stat != 0) {
+                        document.getElementById("username").disabled = true;
+                        document.getElementById("password").disabled = true;
+                        throw ("Open Dog Error!");
+                    }
+                    else {
+                        document.getElementById("username").disabled = false;
+                        document.getElementById("password").disabled = false;
+                        objAuth.Close();
+                    }
+                }
+            }
+        }
+        catch (e) {
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+html{height: 100%!important;}
+body{font-family: "微软雅黑"!important;height: 100%!important;}
+.rel{position:relative}
+.clearfloat{zoom:1;}
+.clearfloat:after{content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.fright{float: right;}
+.fleft{float: left;}
+.center{text-align: center;}
+.right{text-align: right;}
+ul,ul li{text-decoration: none;list-style: none}
+
+.login-int{height: 48px;width: 400px;padding: 0!important;line-height: 48px;outline: none!important;border: none;text-indent: 50px;margin: 29px auto 0;background: url("../../images/login-int.png") no-repeat;}
+.login-btn{width: 396px;height: 44px;line-height: 44px;margin: 0 auto;border-radius: 4px!important;padding:0!important;font-size: 16px;margin-top: 29px}
+.copyright{color: #fff;position: absolute;bottom: 20px;width: 100%;font-size: 12px;text-align: center;}
+.navbar-nav a{padding: 0!important;}
+.navbar-nav .exit-btn{width: 24px;height: 20px;background: url("../../images/spriptw.png") no-repeat;background-position: 0 -39px;margin: 30px 30px 30px 36px}
+.navbar-nav .exit-btn:hover{background: transparent!important;background-color: transparent!important;color: #fff!important;width: 24px;height: 20px;background: url("../../images/spriptw.png") no-repeat!important;background-position: 0 -39px!important;margin: 30px 30px 30px 36px}
+.navbar-nav .exit-btn:active{background: transparent!important;background-color: transparent!important;color: #fff!important;width: 24px;height: 20px;background: url("../../images/spriptw.png") no-repeat!important;background-position: 0 -39px!important;margin: 30px 30px 30px 36px}
+.navbar-nav .exit-btn:focus{background: transparent!important;background-color: transparent!important;color: #fff!important;width: 24px;height: 20px;background: url("../../images/spriptw.png") no-repeat!important;background-position: 0 -39px!important;margin: 30px 30px 30px 36px}
+.navbar-nav .hidden-xs{padding-left: 30px;background: url("../../images/spriptw.png") no-repeat left center;background-position: 0 0;display: inline-block;line-height: 30px;color: #fff;margin-top: 25px}
+
+
+.user-icon{width: 26px;height: 30px;background: url("../../images/spriptw.png") no-repeat;background-position: 0 -106px;display: inline-block;position: absolute;left: 31%;top: 9px}
+.psw-icon{width: 27px;height: 30px;background: url("../../images/spriptw.png") no-repeat;background-position: 0 -65px;display: inline-block;position: absolute;left: 31%;top: 9px}
+
+.treeview{border-bottom: 1px solid #DBDCDC;}
+.treeview i.mc{display: inline-block;margin: 12px 22px 0 30px;}
+.menu-icon1{width: 27px;height: 26px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 0;}
+.menu-icon2{width: 27px;height: 27px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -49px;}
+.menu-icon3{width: 27px;height: 26px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -100px;}
+.menu-icon4{width: 27px;height: 27px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -146px;}
+.menu-icon5{width: 27px;height: 27px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -198px;}
+.menu-icon6{width: 27px;height: 26px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -249px;}
+.menu-icon7{width: 27px;height: 27px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -301px;}
+.menu-icon8{width: 27px;height: 26px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -351px;}
+.menu-icon9{width: 27px;height: 26px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -403px;}
+.menu-icon10{width: 27px;height: 26px;background: url("../../images/menu-icon.png") no-repeat;background-position: 0 -453px;}
+
+.iconbox{border-right: 1px solid #dbdcdc;overflow: hidden;height: 50px;display: inline-block;float: left;margin-right: 38px}
+
+.sidebar-toggle{position: absolute;top: 50%;z-index: 111111;width: 20px;height: 50px;margin-top: -25px;left: 230px;background: url("../../images/sidebar-toggle.jpg") no-repeat;transform: translate(0px, 0);-webkit-transform: translate(0px, 0);-o-transform: translate(0px, 0);-moz-transform: translate(0px, 0);transition: transform .3s ease-in-out,left .3s ease-in-out;-o-transition: transform .3s ease-in-out,left .3s ease-in-out;-webkit-transition: transform .3s ease-in-out,left .3s ease-in-out;-moz-animation: transform .3s ease-in-out,left .3s ease-in-out;}
+.sidebar-mini.sidebar-collapse .sidebar-toggle{transform: translate(-230px, 0)rotate(180deg);-webkit-transform: translate(-230px, 0)rotate(180deg);-o-transform: translate(-230px, 0)rotate(180deg);-moz-transform: translate(-230px, 0)rotate(180deg);}
+
+.breadcrumbs{margin: 15px 15px 0;}
+.breadcrumbs .breadcrumb{margin-bottom: 0;background: #F0F3FA}
+.breadcrumb > li + li::before {content: '>'}
+
+.average3 tr th{width: 1%}
+.average tr th{width: 1%}
+.average tr td{width: 1%}
+
+.h-select{width: 30%;height: 40px;line-height: 40px;display: inline-block;padding: 0;border: 1px solid #C7C7C7;border-radius: 5px;margin-right: 15px}
+.h-select:focus{outline: none}
+.box{border: 1px solid #d2d6de}
+.l-t tr th{font-weight: 600}
+.search-int{height: 40px;line-height: 40px;display: inline-block;padding: 0;border: 1px solid #C7C7C7;border-radius: 5px;text-indent: 10px;width:30%;margin-right: 15px}
+.search-int:focus{outline: none!important;}
+
+
+
+
+.l-t tr td{line-height: 34px!important;}
+.h-btn{width: 100px;height: 40px;cursor: pointer;line-height: 40px;text-align: center;display: inline-block;color: #fff;border-radius: 5px;font-size: 14px;margin-bottom:20px;}
+.h-btn:hover{color: #fff}
+.green-btn{background: #9cc96c}
+.blue-btn{background: #4589DC}
+.red-btn{background: #CE5423}
+.yellow-btn{background: #F19601}
+.brown-btn{background: #C79F62}
+
+div.step{padding: 0 15px;margin-bottom: 50px}
+.step ul{display: flex;justify-content:space-between;padding: 0;align-items:center}
+.step ul li{width: 7%;float: left}
+.step ul li img,.step ul li i,.step ul li span{display: block;text-align: center}
+.step ul li img{width: 100%}
+.step ul li i{font-style: normal;font-size: 12px}
+.step ul li.line{width: 8.5%;}
+.step ul li.line span{display: block;border: 1px dashed #237ae4;}
+.step ul li .stepname.cur{color: #237AE4;font-weight: 600}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
